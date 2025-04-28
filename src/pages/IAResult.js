@@ -24,7 +24,9 @@ function IAResult({ result }) {
   return (
     <div className="ia-result-container">
       <h2>No se pudo identificar la especie</h2>
-      <button>Solicitar verificación</button>
+      <button onClick={() => navigate("/request-verification")}>
+        Solicitar verificación
+      </button>
     </div>
   );
 }

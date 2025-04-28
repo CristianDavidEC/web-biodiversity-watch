@@ -12,6 +12,7 @@ import SearchSpecies from "./pages/SearchSpecies";
 import UploadImage from "./pages/UploadImage";
 import IAResult from "./pages/IAResult";
 import CreatePost from "./pages/CreatePost";
+import RequestVerification from "./pages/RequestVerification";
 import "./App.css";
 
 function CreatePostWrapper() {
@@ -38,6 +39,7 @@ function App() {
     { id: 3, name: "Frailejón" },
   ];
   const mockIAResult = { status: "known", specie: { name: "Cóndor Andino" } };
+  const mockIAUnknown = { status: "unknown" };
 
   return (
     <Router>
@@ -105,10 +107,30 @@ function App() {
             }
           />
           <Route
+            path="/ia-unknown"
+            element={
+              isAuthenticated ? (
+                <IAResult result={mockIAUnknown} />
+              ) : (
+                <Navigate to="/login" replace />
+              )
+            }
+          />
+          <Route
             path="/create-post"
             element={
               isAuthenticated ? (
                 <CreatePostWrapper />
+              ) : (
+                <Navigate to="/login" replace />
+              )
+            }
+          />
+          <Route
+            path="/request-verification"
+            element={
+              isAuthenticated ? (
+                <RequestVerification />
               ) : (
                 <Navigate to="/login" replace />
               )
