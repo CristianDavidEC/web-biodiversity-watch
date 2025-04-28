@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
   Navigate,
+  useLocation,
 } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
@@ -10,7 +11,15 @@ import Profile from "./pages/Profile";
 import SearchSpecies from "./pages/SearchSpecies";
 import UploadImage from "./pages/UploadImage";
 import IAResult from "./pages/IAResult";
+import CreatePost from "./pages/CreatePost";
 import "./App.css";
+
+function CreatePostWrapper() {
+  const location = useLocation();
+  const specieName = location.state?.specieName;
+  if (!specieName) return <p>No se ha seleccionado especie</p>;
+  return <CreatePost specieName={specieName} />;
+}
 
 function App() {
   // Por ahora usaremos un estado mock para simular la autenticación
@@ -90,6 +99,16 @@ function App() {
             element={
               isAuthenticated ? (
                 <IAResult result={mockIAResult} />
+              ) : (
+                <Navigate to="/login" replace />
+              )
+            }
+          />
+          <Route
+            path="/create-post"
+            element={
+              isAuthenticated ? (
+                <CreatePostWrapper />
               ) : (
                 <Navigate to="/login" replace />
               )
