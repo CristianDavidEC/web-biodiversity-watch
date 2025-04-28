@@ -18,6 +18,7 @@ function Home({ user, isAdmin }) {
         Cargar/Capturar imagen
       </button>
       <button onClick={() => navigate("/posts")}>Ver publicaciones</button>
+      <button onClick={() => navigate("/map")}>Mapa interactivo</button>
       {isAdmin && <button>Panel de administración</button>}
       <button onClick={handleLogout}>Cerrar sesión</button>
     </div>

@@ -14,6 +14,7 @@ import IAResult from "./pages/IAResult";
 import CreatePost from "./pages/CreatePost";
 import RequestVerification from "./pages/RequestVerification";
 import Posts from "./pages/Posts";
+import Map from "./pages/Map";
 import "./App.css";
 
 function CreatePostWrapper() {
@@ -153,6 +154,16 @@ function App() {
             element={
               isAuthenticated ? (
                 <Posts posts={mockPosts} />
+              ) : (
+                <Navigate to="/login" replace />
+              )
+            }
+          />
+          <Route
+            path="/map"
+            element={
+              isAuthenticated ? (
+                <Map posts={mockPosts} />
               ) : (
                 <Navigate to="/login" replace />
               )
