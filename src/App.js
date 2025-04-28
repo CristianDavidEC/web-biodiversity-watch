@@ -6,11 +6,26 @@ import {
 } from "react-router-dom";
 import Login from "./pages/Login";
 import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import SearchSpecies from "./pages/SearchSpecies";
 import "./App.css";
 
 function App() {
   // Por ahora usaremos un estado mock para simular la autenticación
-  const isAuthenticated = false;
+  const isAuthenticated = true;
+  const mockUser = {
+    name: "Usuario Ejemplo",
+    email: "usuario@ejemplo.com",
+    posts: [
+      { id: 1, title: "Avistamiento de cóndor", specie: "Cóndor Andino" },
+      { id: 2, title: "Orquídea silvestre", specie: "Orquídea" },
+    ],
+  };
+  const mockSpecies = [
+    { id: 1, name: "Cóndor Andino" },
+    { id: 2, name: "Orquídea" },
+    { id: 3, name: "Frailejón" },
+  ];
 
   return (
     <Router>
@@ -31,7 +46,27 @@ function App() {
             path="/home"
             element={
               isAuthenticated ? (
-                <Home user={{ name: "Usuario" }} isAdmin={false} />
+                <Home user={mockUser} isAdmin={false} />
+              ) : (
+                <Navigate to="/login" replace />
+              )
+            }
+          />
+          <Route
+            path="/profile"
+            element={
+              isAuthenticated ? (
+                <Profile user={mockUser} />
+              ) : (
+                <Navigate to="/login" replace />
+              )
+            }
+          />
+          <Route
+            path="/search"
+            element={
+              isAuthenticated ? (
+                <SearchSpecies species={mockSpecies} />
               ) : (
                 <Navigate to="/login" replace />
               )
