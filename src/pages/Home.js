@@ -12,9 +12,11 @@ function Home({ user, isAdmin }) {
   return (
     <div className="home-container">
       <h2>Bienvenido, {user.name}</h2>
-      <button>Buscar especie</button>
-      <button>Mi perfil</button>
-      <button>Cargar/Capturar imagen</button>
+      <button onClick={() => navigate("/search")}>Buscar especie</button>
+      <button onClick={() => navigate("/profile")}>Mi perfil</button>
+      <button onClick={() => navigate("/upload")}>
+        Cargar/Capturar imagen
+      </button>
       {isAdmin && <button>Panel de administración</button>}
       <button onClick={handleLogout}>Cerrar sesión</button>
     </div>
