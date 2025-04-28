@@ -1,12 +1,23 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function IAResult({ result }) {
+  const navigate = useNavigate();
+
   if (result.status === "known") {
     return (
       <div className="ia-result-container">
         <h2>Especie identificada</h2>
         <p>{result.specie.name}</p>
-        <button>Crear post</button>
+        <button
+          onClick={() =>
+            navigate("/create-post", {
+              state: { specieName: result.specie.name },
+            })
+          }
+        >
+          Crear post
+        </button>
       </div>
     );
   }
