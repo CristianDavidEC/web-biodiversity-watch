@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import SearchSpecies from "./pages/SearchSpecies";
 import UploadImage from "./pages/UploadImage";
+import IAResult from "./pages/IAResult";
 import "./App.css";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
     { id: 2, name: "Orquídea" },
     { id: 3, name: "Frailejón" },
   ];
+  const mockIAResult = { status: "known", specie: { name: "Cóndor Andino" } };
 
   return (
     <Router>
@@ -78,6 +80,16 @@ function App() {
             element={
               isAuthenticated ? (
                 <UploadImage />
+              ) : (
+                <Navigate to="/login" replace />
+              )
+            }
+          />
+          <Route
+            path="/ia-result"
+            element={
+              isAuthenticated ? (
+                <IAResult result={mockIAResult} />
               ) : (
                 <Navigate to="/login" replace />
               )

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function UploadImage() {
   const [fileName, setFileName] = useState("");
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -16,6 +18,12 @@ function UploadImage() {
     }
   };
 
+  const handleUpload = () => {
+    if (!fileName) return;
+    // Simular resultado de IA
+    navigate("/ia-result");
+  };
+
   return (
     <div className="upload-image-container">
       <label htmlFor="file-input">Selecciona una imagen</label>
@@ -25,7 +33,7 @@ function UploadImage() {
         accept="image/*"
         onChange={handleFileChange}
       />
-      <button>Subir imagen</button>
+      <button onClick={handleUpload}>Subir imagen</button>
       {fileName && <p>{fileName}</p>}
       {error && <p>{error}</p>}
     </div>
