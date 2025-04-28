@@ -13,6 +13,7 @@ import UploadImage from "./pages/UploadImage";
 import IAResult from "./pages/IAResult";
 import CreatePost from "./pages/CreatePost";
 import RequestVerification from "./pages/RequestVerification";
+import Posts from "./pages/Posts";
 import "./App.css";
 
 function CreatePostWrapper() {
@@ -29,8 +30,18 @@ function App() {
     name: "Usuario Ejemplo",
     email: "usuario@ejemplo.com",
     posts: [
-      { id: 1, title: "Avistamiento de cóndor", specie: "Cóndor Andino" },
-      { id: 2, title: "Orquídea silvestre", specie: "Orquídea" },
+      {
+        id: 1,
+        title: "Avistamiento de cóndor",
+        specie: "Cóndor Andino",
+        location: "Nevado del Ruiz",
+      },
+      {
+        id: 2,
+        title: "Orquídea silvestre",
+        specie: "Orquídea",
+        location: "Valle de las Tumbas",
+      },
     ],
   };
   const mockSpecies = [
@@ -40,6 +51,7 @@ function App() {
   ];
   const mockIAResult = { status: "known", specie: { name: "Cóndor Andino" } };
   const mockIAUnknown = { status: "unknown" };
+  const mockPosts = mockUser.posts;
 
   return (
     <Router>
@@ -131,6 +143,16 @@ function App() {
             element={
               isAuthenticated ? (
                 <RequestVerification />
+              ) : (
+                <Navigate to="/login" replace />
+              )
+            }
+          />
+          <Route
+            path="/posts"
+            element={
+              isAuthenticated ? (
+                <Posts posts={mockPosts} />
               ) : (
                 <Navigate to="/login" replace />
               )
