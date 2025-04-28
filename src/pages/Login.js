@@ -1,8 +1,13 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login({ errorMsg }) {
+  const navigate = useNavigate();
+
   const handleGoogleSignIn = () => {
     // Lógica de autenticación Google (mock)
+    // Por ahora simulamos una autenticación exitosa
+    navigate("/home");
   };
 
   return (
