@@ -1,70 +1,134 @@
-# Getting Started with Create React App
+# Biodiversity Watch - Aplicación Web
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esta es una aplicación web desarrollada con React para el monitoreo y seguimiento de la biodiversidad.
 
-## Available Scripts
+## Requisitos Previos
 
-In the project directory, you can run:
+Antes de comenzar, asegúrate de tener instalado:
 
-### `npm start`
+- Node.js (versión 14.0.0 o superior)
+- npm (incluido con Node.js)
+- Git
+- Un editor de código (recomendamos Visual Studio Code)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Instalación
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clona el repositorio:
 
-### `npm test`
+```bash
+git clone https://github.com/CristianDavidEC/web-biodiversity-watch.git
+cd web-biodiversity-watch
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Instala las dependencias:
 
-### `npm run build`
+```bash
+npm install
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Configuración
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Crea un archivo `.env` en la raíz del proyecto con las siguientes variables:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+REACT_APP_API_URL=tu_url_api
+REACT_APP_GOOGLE_MAPS_API_KEY=tu_api_key
+```
 
-### `npm run eject`
+2. Configura las variables de entorno según tu entorno de desarrollo.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Ejecución del Proyecto
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Modo Desarrollo
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Para ejecutar la aplicación en modo desarrollo:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+La aplicación estará disponible en [http://localhost:3000](http://localhost:3000)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Conexión con Dispositivo Móvil
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Para acceder a la aplicación desde tu dispositivo móvil:
 
-### Code Splitting
+1. Asegúrate de que tu computadora y el dispositivo móvil estén en la misma red WiFi
+2. Encuentra la dirección IP de tu computadora:
+   - Windows: Abre CMD y escribe `ipconfig`
+   - Mac/Linux: Abre Terminal y escribe `ifconfig`
+3. En tu dispositivo móvil, abre el navegador y accede a:
+   `http://[TU_IP_LOCAL]:3000`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Construcción para Producción
 
-### Analyzing the Bundle Size
+Para crear una versión optimizada para producción:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+```bash
+npm run build
+```
 
-### Making a Progressive Web App
+Los archivos de producción se generarán en la carpeta `build`.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Scripts Disponibles
 
-### Advanced Configuration
+- `npm start`: Inicia la aplicación en modo desarrollo
+- `npm test`: Ejecuta las pruebas
+- `npm run build`: Construye la aplicación para producción
+- `npm run eject`: Expulsa la configuración de Create React App (¡usar con precaución!)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Estructura del Proyecto
 
-### Deployment
+```
+web-biodiversity-watch/
+├── public/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   ├── services/
+│   ├── utils/
+│   └── App.js
+├── package.json
+└── README.md
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Solución de Problemas
 
-### `npm run build` fails to minify
+### Problemas Comunes
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. **Error de puerto en uso**
+
+   - Si el puerto 3000 está ocupado, la aplicación intentará usar otro puerto
+   - Puedes especificar un puerto diferente: `PORT=3001 npm start`
+
+2. **Errores de dependencias**
+
+   - Si encuentras errores de dependencias, intenta:
+     ```bash
+     rm -rf node_modules
+     npm install
+     ```
+
+3. **Problemas de conexión móvil**
+   - Verifica que el firewall no esté bloqueando el puerto 3000
+   - Asegúrate de que ambos dispositivos estén en la misma red
+
+## Soporte
+
+Si encuentras algún problema o tienes preguntas, por favor:
+
+1. Revisa la documentación
+2. Abre un issue en el repositorio
+3. Contacta al equipo de desarrollo
+
+## Contribución
+
+1. Haz fork del proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## Licencia
+
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE.md](LICENSE.md) para más detalles.
